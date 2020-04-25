@@ -5,6 +5,7 @@ import withClass from './components/Hoc/withClass'
 import ClassBaseCom from './components/classBaseCom'
 import AppContext from './appCtx'
 import FunBaseComp from "./components/funBaseComp";
+import {BrowserRouter} from 'react-router-dom'
 
 // function App() {
   class App extends PureComponent {
@@ -36,18 +37,20 @@ import FunBaseComp from "./components/funBaseComp";
       render() {
           console.warn('render');
           return (
-              <React.Fragment>
-                  <div className="App">
-                      <h1>hey</h1>
-                      <button onClick={this.toggleTestVisible}>toogl Test visible</button>
-                      {this.state.testVisible ? <Test msg={this.state.msg} action={this.printMsg} /> : ''}
-                  </div>
-                  <h1>bottom</h1>
-                  <AppContext.Provider value={{ctxVal: this.state.ctxVal}}>
-                      <ClassBaseCom></ClassBaseCom>
-                      <FunBaseComp></FunBaseComp>
-                  </AppContext.Provider>
-              </React.Fragment>
+              <BrowserRouter>
+                  <React.Fragment>
+                      <div className="App">
+                          <h1>hey</h1>
+                          <button onClick={this.toggleTestVisible}>toogl Test visible</button>
+                          {this.state.testVisible ? <Test msg={this.state.msg} action={this.printMsg} /> : ''}
+                      </div>
+                      <h1>bottom</h1>
+                      <AppContext.Provider value={{ctxVal: this.state.ctxVal}}>
+                          <ClassBaseCom></ClassBaseCom>
+                          <FunBaseComp></FunBaseComp>
+                      </AppContext.Provider>
+                  </React.Fragment>
+              </BrowserRouter>
           );
       }
       componentDidMount() {
