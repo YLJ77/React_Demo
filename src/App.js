@@ -1,6 +1,5 @@
-import React, {Component, PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import './App.css';
-import Test from './components/funBaseComp'
 import withClass from './components/Hoc/withClass'
 import ClassBaseCom from './components/classBaseCom'
 import AppContext from './appCtx'
@@ -42,12 +41,12 @@ import {BrowserRouter} from 'react-router-dom'
                       <div className="App">
                           <h1>hey</h1>
                           <button onClick={this.toggleTestVisible}>toogl Test visible</button>
-                          {this.state.testVisible ? <Test msg={this.state.msg} action={this.printMsg} /> : ''}
+                          {this.state.testVisible ? <FunBaseComp msg={this.state.msg} action={this.printMsg} /> : ''}
                       </div>
                       <h1>bottom</h1>
                       <AppContext.Provider value={{ctxVal: this.state.ctxVal}}>
-                          <ClassBaseCom></ClassBaseCom>
-                          <FunBaseComp></FunBaseComp>
+                          <ClassBaseCom/>
+                          <FunBaseComp/>
                       </AppContext.Provider>
                   </React.Fragment>
               </BrowserRouter>
