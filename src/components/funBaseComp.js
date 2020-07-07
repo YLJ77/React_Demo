@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useContext} from "react";
 import PropTypes from 'prop-types'
 import appCtx from "../appCtx";
+import Foo from './Foo'
 
 const FunBaseComp = (props) => {
     const titleRef = useRef(null);
@@ -18,6 +19,7 @@ const FunBaseComp = (props) => {
         <p>{props.children}</p>
         <h3>{ctx.ctxVal}</h3>
         <input type="text" onChange={props.action} value={props.msg}/>
+        <Foo/>
     </div>
 }
 
