@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import { connect } from 'react-redux'
 import * as actionTypes from '../store/actions'
 import AppCtx from '../appCtx'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import HelloWord from './HelloWord'
 
 class ClassBaseCom extends PureComponent {
@@ -34,14 +34,14 @@ class ClassBaseCom extends PureComponent {
             <a href="/bar">bar</a>
 */}
             <Link to='/test'>Test</Link>
-<Link to={{
-    pathname: '/bar',
-    hash: '#yi',
-    search: '?a=b'
-}}>Bar</Link>
-            <Route path="/test" render={() => <h1>render func route</h1>} />
-            {/*<Route path="/bar" render={() => <h1>Bar</h1>} />*/}
-            <Route path="/bar" component={HelloWord} />
+            <Link to={{ pathname: '/bar', hash: '#yi', search: '?a=b' }}>Bar</Link>
+            <Switch>
+                <Route path="/test" exact render={() => <h1>render func route</h1>} />
+                {/*<Route path="/bar" render={() => <h1>Bar</h1>} />*/}
+                <Route path="/bar" exact component={HelloWord} />
+                <Route path='/' render={() => <div>404</div>}/>
+            </Switch>
+            <button onClick={()=>{this.props.history.push('/bar')}}>go to bar</button>
             <h1>{this.props.counter}</h1>
             <button onClick={this.props.onIncrementCounter}>inc</button>
         </div>
