@@ -7,8 +7,12 @@ import Foo from './Foo'
 configure({adapter: new Adapter()});
 
 describe('<FunBaseComp/>', () => {
+    let wrapper;
+    beforeEach(() => {
+        wrapper = shallow(<FunctionBaseComp/>);
+    })
     it('should have msg prop', () => {
-        const wrapper = shallow(<FunctionBaseComp/>);
+        wrapper.setProps({msg: 'foo'});
         expect(wrapper.find(Foo)).toHaveLength(1)
     })
 })
